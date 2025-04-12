@@ -1,0 +1,48 @@
+# Deno Web Standards App
+
+A simple Todo application built with Deno 2 and Action Web Components, demonstrating a standards-first approach to web development.
+
+## Features
+
+- Server-side rendering with Deno
+- Action Web Components for dynamic UI updates
+- No frontend framework - uses vanilla JavaScript and web standards
+- Progressive enhancement approach
+
+## Getting Started
+
+### Prerequisites
+
+- [Deno 2.0+](https://deno.com/) installed on your machine
+
+### Running the Application
+
+1. Clone this repository
+2. Navigate to the project directory
+3. Run the development server:
+
+```bash
+deno task dev
+```
+
+4. Open your browser and visit http://localhost:8000
+
+## Project Structure
+
+- `server.ts` - Main Deno server file
+- `/static` - Static assets (JS, CSS)
+  - `/js/action-components.js` - Action Web Components definitions
+- `/views` - Server-side view templates
+- `/routes` - Route handlers
+
+## Action Web Components
+
+This project uses Action Web Components (AWC) for server-driven UI updates:
+
+- `<ac-yellow-fade>` - Applies a yellow highlight effect to an element
+- `<ac-toggle-class>` - Toggles a CSS class on an element
+- `<ac-children>` - Replaces the children of an element
+
+## License
+
+MIT
