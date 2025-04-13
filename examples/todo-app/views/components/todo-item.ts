@@ -1,7 +1,14 @@
-// views/components/todo-item.ts - Todo item component
+// examples/todo-app/views/components/todo-item.ts - Todo item component
 
+import { html } from '../../../../noujs/utils/html.ts';
+
+/**
+ * Renders a todo item
+ * @param todo The todo item
+ * @returns HTML for the todo item
+ */
 export function renderTodoItem(todo: { id: string; text: string; completed: boolean }): string {
-    return `
+  return html`
     <li id="todo-${todo.id}" class="todo-item ${todo.completed ? 'completed' : ''}">
       <div class="todo-content">
         <button class="todo-toggle" data-id="${todo.id}" data-action="toggle">
@@ -15,5 +22,5 @@ export function renderTodoItem(todo: { id: string; text: string; completed: bool
         </button>
       </div>
     </li>
-    `;
-  }
+  `;
+} 

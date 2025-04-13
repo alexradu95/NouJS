@@ -1,17 +1,19 @@
-// views/home.ts - Home page template
-import { renderTodoItem } from "./components/todo-item.ts";
+// examples/todo-app/views/home.ts - Home page template for the todo app
 
-// In-memory todo store (same as in API for the example)
+import { html } from '../../../noujs/utils/html.ts';
+import { renderTodoItem } from './components/todo-item.ts';
+
+// Using the same todos data from API (in a real app, this would be fetched)
 const todos = [
   { id: "1", text: "Learn Deno", completed: true },
-  { id: "2", text: "Build with Action Web Components", completed: false },
+  { id: "2", text: "Build with NouJS", completed: false },
 ];
 
 export function renderHomePage(): string {
-  return `
+  return html`
   <section class="intro">
     <h2>Todo App Example</h2>
-    <p>This example demonstrates Action Web Components with Deno.</p>
+    <p>This example demonstrates NouJS Framework capabilities with Deno.</p>
   </section>
 
   <section class="todos">
@@ -51,4 +53,4 @@ export function renderHomePage(): string {
     </div>
   </section>
   `;
-}
+} 

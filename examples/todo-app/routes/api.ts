@@ -1,10 +1,12 @@
-// routes/api.ts - Handles API endpoints
-import { renderTodoItem } from "../views/components/todo-item.ts";
+// examples/todo-app/routes/api.ts - Handles API endpoints for the todo app
+
+import { html } from '../../../noujs/utils/html.ts';
+import { renderTodoItem } from '../views/components/todo-item.ts';
 
 // In-memory todo store for the example
 const todos: { id: string; text: string; completed: boolean }[] = [
   { id: "1", text: "Learn Deno", completed: true },
-  { id: "2", text: "Build with Action Web Components", completed: false },
+  { id: "2", text: "Build with NouJS", completed: false },
 ];
 
 export async function apiRoutes(req: Request): Promise<Response> {
@@ -26,7 +28,7 @@ export async function apiRoutes(req: Request): Promise<Response> {
       
       // Return HTML fragment with Action Web Components
       const todoHtml = renderTodoItem(newTodo);
-      const actionHtml = `
+      const actionHtml = html`
         <ac-swap target="todo-list" method="beforeend">
           ${todoHtml}
         </ac-swap>
@@ -56,7 +58,7 @@ export async function apiRoutes(req: Request): Promise<Response> {
       todo.completed = !todo.completed;
       
       // Return action web components for toggling and updating UI
-      const actionHtml = `
+      const actionHtml = html`
         <ac-toggle-class target="todo-${id}" classname="completed"></ac-toggle-class>
         <ac-yellow-fade target="todo-${id}" duration="1000"></ac-yellow-fade>
         <ac-set-content target="todo-${id} .todo-toggle" content="${todo.completed ? '✓' : '○'}"></ac-set-content>
@@ -78,7 +80,7 @@ export async function apiRoutes(req: Request): Promise<Response> {
       todos.splice(todoIndex, 1);
       
       // Return action web components for removal and updating counts
-      const actionHtml = `
+      const actionHtml = html`
         <ac-yellow-fade target="todo-${id}" duration="500"></ac-yellow-fade>
         <ac-swap target="todo-${id}" method="outerHTML"></ac-swap>
         <ac-set-content target="todo-count" content="${todos.length} items"></ac-set-content>
@@ -121,7 +123,7 @@ export async function apiRoutes(req: Request): Promise<Response> {
     const todoHtml = filteredTodos.map(todo => renderTodoItem(todo)).join('');
     
     // Return action web component to swap todos and update active filter
-    const actionHtml = `
+    const actionHtml = html`
       <ac-swap target="todo-list">
         ${todoHtml}
       </ac-swap>
@@ -138,4 +140,4 @@ export async function apiRoutes(req: Request): Promise<Response> {
     status: 404,
     headers: { "Content-Type": "text/plain" },
   });
-}
+} 
